@@ -1,0 +1,866 @@
+Tue Sep 20 13:30:56 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:30:56 2022:	*     / |__                                                                   *
+Tue Sep 20 13:30:56 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:30:56 2022:	*      | /                                                                    *
+Tue Sep 20 13:30:56 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:30:56 2022:	*
+Tue Sep 20 13:30:56 2022:	* Evaluating triggers...
+Tue Sep 20 13:30:56 2022:	* ':' option requires an argument -- n
+
+Tue Sep 20 13:30:56 2022:	
+Tue Sep 20 13:30:56 2022:	*******************************************************************************
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:30:56 2022:	                             of command line switches)                         
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:30:56 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:30:56 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:30:56 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:30:56 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:30:56 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:30:56 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:30:56 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:30:56 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:30:56 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:30:56 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:30:56 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:30:56 2022:	                             Default = medium                                  
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:30:56 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:30:56 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:30:56 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:30:56 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:30:56 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:30:56 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:30:56 2022:	                             updated only.                                     
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:30:56 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:30:56 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:30:56 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:30:56 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:30:56 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:30:56 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:30:56 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:30:56 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:30:56 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:30:56 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:30:56 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:30:56 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:30:56 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:30:56 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:30:56 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:30:56 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:30:56 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:30:56 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:30:56 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:30:56 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:30:56 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:30:56 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:30:56 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:30:56 2022:	                                                                               
+Tue Sep 20 13:30:56 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:30:56 2022:	                             to open a password protected target device        
+Tue Sep 20 13:30:56 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:30:56 2022:	                             prompted if theTue Sep 20 13:31:19 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:31:19 2022:	*     / |__                                                                   *
+Tue Sep 20 13:31:19 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:31:19 2022:	*      | /                                                                    *
+Tue Sep 20 13:31:19 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:31:19 2022:	*
+Tue Sep 20 13:31:19 2022:	* Evaluating triggers...
+Tue Sep 20 13:31:19 2022:	* ':' option requires an argument -- n
+
+Tue Sep 20 13:31:19 2022:	
+Tue Sep 20 13:31:19 2022:	*******************************************************************************
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:31:19 2022:	                             of command line switches)                         
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:31:19 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:31:19 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:31:19 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:31:19 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:31:19 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:31:19 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:31:19 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:31:19 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:31:19 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:31:19 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:31:19 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:31:19 2022:	                             Default = medium                                  
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:31:19 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:31:19 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:31:19 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:31:19 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:31:19 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:31:19 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:31:19 2022:	                             updated only.                                     
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:31:19 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:31:19 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:31:19 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:31:19 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:31:19 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:31:19 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:31:19 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:31:19 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:31:19 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:31:19 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:31:19 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:31:19 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:31:19 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:31:19 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:31:19 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:31:19 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:31:19 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:31:19 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:31:19 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:31:19 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:31:19 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:31:19 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:31:19 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:31:19 2022:	                                                                               
+Tue Sep 20 13:31:19 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:31:19 2022:	                             to open a password protected target device        
+Tue Sep 20 13:31:19 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:31:19 2022:	                             prompted if theTue Sep 20 13:31:37 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:31:37 2022:	*     / |__                                                                   *
+Tue Sep 20 13:31:37 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:31:37 2022:	*      | /                                                                    *
+Tue Sep 20 13:31:37 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:31:37 2022:	*
+Tue Sep 20 13:31:37 2022:	* Evaluating triggers...
+Tue Sep 20 13:31:37 2022:	* ':' option requires an argument -- n
+
+Tue Sep 20 13:31:37 2022:	
+Tue Sep 20 13:31:37 2022:	*******************************************************************************
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:31:37 2022:	                             of command line switches)                         
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:31:37 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:31:37 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:31:37 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:31:37 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:31:37 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:31:37 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:31:37 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:31:37 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:31:37 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:31:37 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:31:37 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:31:37 2022:	                             Default = medium                                  
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:31:37 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:31:37 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:31:37 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:31:37 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:31:37 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:31:37 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:31:37 2022:	                             updated only.                                     
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:31:37 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:31:37 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:31:37 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:31:37 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:31:37 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:31:37 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:31:37 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:31:37 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:31:37 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:31:37 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:31:37 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:31:37 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:31:37 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:31:37 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:31:37 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:31:37 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:31:37 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:31:37 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:31:37 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:31:37 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:31:37 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:31:37 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:31:37 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:31:37 2022:	                                                                               
+Tue Sep 20 13:31:37 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:31:37 2022:	                             to open a password protected target device        
+Tue Sep 20 13:31:37 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:31:37 2022:	                             prompted if theTue Sep 20 13:32:07 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:32:07 2022:	*     / |__                                                                   *
+Tue Sep 20 13:32:07 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:32:07 2022:	*      | /                                                                    *
+Tue Sep 20 13:32:07 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:32:07 2022:	*
+Tue Sep 20 13:32:07 2022:	* Evaluating triggers...
+Tue Sep 20 13:32:07 2022:	* ':' option requires an argument -- n
+
+Tue Sep 20 13:32:07 2022:	
+Tue Sep 20 13:32:07 2022:	*******************************************************************************
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:32:07 2022:	                             of command line switches)                         
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:32:07 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:32:07 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:32:07 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:32:07 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:32:07 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:32:07 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:32:07 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:32:07 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:32:07 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:32:07 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:32:07 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:32:07 2022:	                             Default = medium                                  
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:32:07 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:32:07 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:32:07 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:32:07 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:32:07 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:32:07 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:32:07 2022:	                             updated only.                                     
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:32:07 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:32:07 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:32:07 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:32:07 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:32:07 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:32:07 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:32:07 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:32:07 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:32:07 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:32:07 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:32:07 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:32:07 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:32:07 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:32:07 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:32:07 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:32:07 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:32:07 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:32:07 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:32:07 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:32:07 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:32:07 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:32:07 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:32:07 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:32:07 2022:	                                                                               
+Tue Sep 20 13:32:07 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:32:07 2022:	                             to open a password protected target device        
+Tue Sep 20 13:32:07 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:32:07 2022:	                             prompted if theTue Sep 20 13:32:39 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:32:39 2022:	*     / |__                                                                   *
+Tue Sep 20 13:32:39 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:32:39 2022:	*      | /                                                                    *
+Tue Sep 20 13:32:39 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:32:39 2022:	*
+Tue Sep 20 13:32:39 2022:	* Evaluating triggers...
+Tue Sep 20 13:32:39 2022:	* ':' option requires an argument -- w
+
+Tue Sep 20 13:32:39 2022:	
+Tue Sep 20 13:32:39 2022:	*******************************************************************************
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:32:39 2022:	                             of command line switches)                         
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:32:39 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:32:39 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:32:39 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:32:39 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:32:39 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:32:39 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:32:39 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:32:39 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:32:39 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:32:39 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:32:39 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:32:39 2022:	                             Default = medium                                  
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:32:39 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:32:39 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:32:39 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:32:39 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:32:39 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:32:39 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:32:39 2022:	                             updated only.                                     
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:32:39 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:32:39 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:32:39 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:32:39 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:32:39 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:32:39 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:32:39 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:32:39 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:32:39 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:32:39 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:32:39 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:32:39 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:32:39 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:32:39 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:32:39 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:32:39 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:32:39 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:32:39 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:32:39 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:32:39 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:32:39 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:32:39 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:32:39 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:32:39 2022:	                                                                               
+Tue Sep 20 13:32:39 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:32:39 2022:	                             to open a password protected target device        
+Tue Sep 20 13:32:39 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:32:39 2022:	                             prompted if theTue Sep 20 13:34:06 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:34:06 2022:	*     / |__                                                                   *
+Tue Sep 20 13:34:06 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:34:06 2022:	*      | /                                                                    *
+Tue Sep 20 13:34:06 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:34:06 2022:	*
+Tue Sep 20 13:34:06 2022:	* Evaluating triggers...
+Tue Sep 20 13:34:06 2022:	* file extension unknown -- w
+
+Tue Sep 20 13:34:06 2022:	
+Tue Sep 20 13:34:06 2022:	*******************************************************************************
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:34:06 2022:	                             of command line switches)                         
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:34:06 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:34:06 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:34:06 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:34:06 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:34:06 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:34:06 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:34:06 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:34:06 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:34:06 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:34:06 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:34:06 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:34:06 2022:	                             Default = medium                                  
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:34:06 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:34:06 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:34:06 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:34:06 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:34:06 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:34:06 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:34:06 2022:	                             updated only.                                     
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:34:06 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:34:06 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:34:06 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:34:06 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:34:06 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:34:06 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:34:06 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:34:06 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:34:06 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:34:06 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:34:06 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:34:06 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:34:06 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:34:06 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:34:06 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:34:06 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:34:06 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:34:06 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:34:06 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:34:06 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:34:06 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:34:06 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:34:06 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:34:06 2022:	                                                                               
+Tue Sep 20 13:34:06 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:34:06 2022:	                             to open a password protected target device        
+Tue Sep 20 13:34:06 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:34:06 2022:	                             prompted if the passwordTue Sep 20 13:34:43 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:34:43 2022:	*     / |__                                                                   *
+Tue Sep 20 13:34:43 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:34:43 2022:	*      | /                                                                    *
+Tue Sep 20 13:34:43 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:34:43 2022:	*
+Tue Sep 20 13:34:43 2022:	* Evaluating triggers...
+Tue Sep 20 13:34:43 2022:	* file extension unknown -- w
+
+Tue Sep 20 13:34:43 2022:	
+Tue Sep 20 13:34:43 2022:	*******************************************************************************
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:34:43 2022:	                             of command line switches)                         
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:34:43 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:34:43 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:34:43 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:34:43 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:34:43 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:34:43 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:34:43 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:34:43 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:34:43 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:34:43 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:34:43 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:34:43 2022:	                             Default = medium                                  
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:34:43 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:34:43 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:34:43 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:34:43 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:34:43 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:34:43 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:34:43 2022:	                             updated only.                                     
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:34:43 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:34:43 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:34:43 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:34:43 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:34:43 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:34:43 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:34:43 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:34:43 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:34:43 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:34:43 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:34:43 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:34:43 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:34:43 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:34:43 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:34:43 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:34:43 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:34:43 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:34:43 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:34:43 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:34:43 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:34:43 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:34:43 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:34:43 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:34:43 2022:	                                                                               
+Tue Sep 20 13:34:43 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:34:43 2022:	                             to open a password protected target device        
+Tue Sep 20 13:34:43 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:34:43 2022:	                             prompted if the passwordTue Sep 20 13:36:31 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:36:31 2022:	*     / |__                                                                   *
+Tue Sep 20 13:36:31 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:36:31 2022:	*      | /                                                                    *
+Tue Sep 20 13:36:31 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:36:31 2022:	*
+Tue Sep 20 13:36:31 2022:	* Evaluating triggers...
+Tue Sep 20 13:36:31 2022:	- The entered filename is invalid.
+Tue Sep 20 13:36:31 2022:	-
+Tue Sep 20 13:36:31 2022:	- Please reenter the filename or enter n to abort: Tue Sep 20 13:36:44 2022:	n
+Tue Sep 20 13:36:44 2022:	*******************************************************************************
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:36:44 2022:	                             of command line switches)                         
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:36:44 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:36:44 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:36:44 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:36:44 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:36:44 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:36:44 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:36:44 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:36:44 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:36:44 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:36:44 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:36:44 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:36:44 2022:	                             Default = medium                                  
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:36:44 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:36:44 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:36:44 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:36:44 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:36:44 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:36:44 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:36:44 2022:	                             updated only.                                     
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:36:44 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:36:44 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:36:44 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:36:44 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:36:44 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:36:44 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:36:44 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:36:44 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:36:44 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:36:44 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:36:44 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:36:44 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:36:44 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:36:44 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:36:44 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:36:44 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:36:44 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:36:44 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:36:44 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:36:44 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:36:44 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:36:44 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:36:44 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:36:44 2022:	                             to open a password protected target device        
+Tue Sep 20 13:36:44 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:36:44 2022:	                             prompted if the password is incompatible with     
+Tue Sep 20 13:36:44 2022:	                             the password length deteced by MSP Flasher.       
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -o L | C                    Operating mode for L092 and RF430FR152H family    
+Tue Sep 20 13:36:44 2022:	                             devices. L = L092 mode (normal mode)              
+Tue Sep 20 13:36:44 2022:	                                      C = C092 mode (ROM development mode)     
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -f                          Permanently secures JTAG access to the target MSP.
+Tue Sep 20 13:36:44 2022:	                             Caution: The device will no longer be accessible  
+Tue Sep 20 13:36:44 2022:	                                      through JTAG or Spy-Bi-Wire. This action 
+Tue Sep 20 13:36:44 2022:	                                      is irreversible.                         
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -g                          Disables the logging mechanism.                   
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -a                          Causes a nonintrusive target connection: use      
+Tue Sep 20 13:36:44 2022:	                             this switch if no reset should be applied to      
+Tue Sep 20 13:36:44 2022:	                             the target device on start up. Correct target     
+Tue Sep 20 13:36:44 2022:	                             device name must be specified using the -n switch.
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -s                          Suppresses the FET firmware update prompt.        
+Tue Sep 20 13:36:44 2022:	                             In case of a mismatch between MSP Debug Stack     
+Tue Sep 20 13:36:44 2022:	                             and FET firmware, an update is forced.            
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -q                          QUIET mode: No system messages will be displayed  
+Tue Sep 20 13:36:44 2022:	                                         (except for errors and user prompts)  
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 -z [exit_spec,...]          Specifies the state of the device after           
+Tue Sep 20 13:36:44 2022:	                             programming. View available 'exit_spec's using    
+Tue Sep 20 13:36:44 2022:	                             -x switch). Use ", " as a delimiter.            
+Tue Sep 20 13:36:44 2022:	                                                                               
+Tue Sep 20 13:36:44 2022:	 For a GUI-based alternative, check out UniFlash: http://ti.com/tool/uniflash  
+Tue Sep 20 13:36:44 2022:	*******************************************************************************
+Tue Sep 20 13:36:44 2022:	Press ENTER to continue.
+Tue Sep 20 13:37:12 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:37:12 2022:	*     / |__                                                                   *
+Tue Sep 20 13:37:12 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:37:12 2022:	*      | /                                                                    *
+Tue Sep 20 13:37:12 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:37:12 2022:	*
+Tue Sep 20 13:37:12 2022:	* Evaluating triggers...
+Tue Sep 20 13:37:12 2022:	- The entered filename is invalid.
+Tue Sep 20 13:37:12 2022:	-
+Tue Sep 20 13:37:12 2022:	- Please reenter the filename or enter n to abort: Tue Sep 20 13:37:20 2022:	n
+Tue Sep 20 13:37:20 2022:	*******************************************************************************
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:37:20 2022:	                             of command line switches)                         
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:37:20 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:37:20 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:37:20 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:37:20 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:37:20 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:37:20 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:37:20 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:37:20 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:37:20 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:37:20 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:37:20 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:37:20 2022:	                             Default = medium                                  
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:37:20 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:37:20 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:37:20 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:37:20 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:37:20 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:37:20 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:37:20 2022:	                             updated only.                                     
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:37:20 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:37:20 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:37:20 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:37:20 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:37:20 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:37:20 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:37:20 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:37:20 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:37:20 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:37:20 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:37:20 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:37:20 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:37:20 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:37:20 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:37:20 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:37:20 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:37:20 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:37:20 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:37:20 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:37:20 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:37:20 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:37:20 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:37:20 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:37:20 2022:	                             to open a password protected target device        
+Tue Sep 20 13:37:20 2022:	                             (supported on FRAM devices only). The user is     
+Tue Sep 20 13:37:20 2022:	                             prompted if the password is incompatible with     
+Tue Sep 20 13:37:20 2022:	                             the password length deteced by MSP Flasher.       
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -o L | C                    Operating mode for L092 and RF430FR152H family    
+Tue Sep 20 13:37:20 2022:	                             devices. L = L092 mode (normal mode)              
+Tue Sep 20 13:37:20 2022:	                                      C = C092 mode (ROM development mode)     
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -f                          Permanently secures JTAG access to the target MSP.
+Tue Sep 20 13:37:20 2022:	                             Caution: The device will no longer be accessible  
+Tue Sep 20 13:37:20 2022:	                                      through JTAG or Spy-Bi-Wire. This action 
+Tue Sep 20 13:37:20 2022:	                                      is irreversible.                         
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -g                          Disables the logging mechanism.                   
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -a                          Causes a nonintrusive target connection: use      
+Tue Sep 20 13:37:20 2022:	                             this switch if no reset should be applied to      
+Tue Sep 20 13:37:20 2022:	                             the target device on start up. Correct target     
+Tue Sep 20 13:37:20 2022:	                             device name must be specified using the -n switch.
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -s                          Suppresses the FET firmware update prompt.        
+Tue Sep 20 13:37:20 2022:	                             In case of a mismatch between MSP Debug Stack     
+Tue Sep 20 13:37:20 2022:	                             and FET firmware, an update is forced.            
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -q                          QUIET mode: No system messages will be displayed  
+Tue Sep 20 13:37:20 2022:	                                         (except for errors and user prompts)  
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 -z [exit_spec,...]          Specifies the state of the device after           
+Tue Sep 20 13:37:20 2022:	                             programming. View available 'exit_spec's using    
+Tue Sep 20 13:37:20 2022:	                             -x switch). Use ", " as a delimiter.            
+Tue Sep 20 13:37:20 2022:	                                                                               
+Tue Sep 20 13:37:20 2022:	 For a GUI-based alternative, check out UniFlash: http://ti.com/tool/uniflash  
+Tue Sep 20 13:37:20 2022:	*******************************************************************************
+Tue Sep 20 13:37:20 2022:	Press ENTER to continue.
+Tue Sep 20 13:38:01 2022:	* -----/|-------------------------------------------------------------------- *
+Tue Sep 20 13:38:01 2022:	*     / |__                                                                   *
+Tue Sep 20 13:38:01 2022:	*    /_   /   MSP Flasher v1.3.20                                             *
+Tue Sep 20 13:38:01 2022:	*      | /                                                                    *
+Tue Sep 20 13:38:01 2022:	* -----|/-------------------------------------------------------------------- *
+Tue Sep 20 13:38:01 2022:	*
+Tue Sep 20 13:38:01 2022:	* Evaluating triggers...
+Tue Sep 20 13:38:01 2022:	- The entered filename is invalid.
+Tue Sep 20 13:38:01 2022:	-
+Tue Sep 20 13:38:01 2022:	- Please reenter the filename or enter n to abort: Tue Sep 20 13:38:03 2022:	n
+Tue Sep 20 13:38:03 2022:	*******************************************************************************
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 Usage: MSP430Flasher [OPTIONS]                                                
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -h / -?                     Displays usage information (displays this table   
+Tue Sep 20 13:38:03 2022:	                             of command line switches)                         
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -x                          Displays available exit specifications            
+Tue Sep 20 13:38:03 2022:	                             (see tigger -z)                                   
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -i (TI)USB | DETECT |       Communication port for the FET debugger. TIUSB    
+Tue Sep 20 13:38:03 2022:	    COMn (Win) |             (or USB) is the default. Use COMn (for example,   
+Tue Sep 20 13:38:03 2022:	    ttyACMn (Linux) |        COM15) on Windows or ttyACMn(for example,         
+Tue Sep 20 13:38:03 2022:	    usbmodem* (OSX) |        ttyACM15) on Linux or usbmodemn (for example,     
+Tue Sep 20 13:38:03 2022:	    HIDn:COMn                usbmodem1421) on OS X to choose a debugger        
+Tue Sep 20 13:38:03 2022:	                             connected to COM port n. Use HIDn:COMn for        
+Tue Sep 20 13:38:03 2022:	                             specific eZ430 tools on Windows. Use -i DETECT to 
+Tue Sep 20 13:38:03 2022:	                             execute a FET detection sweep, to display         
+Tue Sep 20 13:38:03 2022:	                             detailed information about all connected debug    
+Tue Sep 20 13:38:03 2022:	                             tools, and to prompt to select a FET.             
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -j fast | medium | slow     Configures the MSP Debug Stack to increase or     
+Tue Sep 20 13:38:03 2022:	                             decrease the JTAG or SBW frequency of the FET.    
+Tue Sep 20 13:38:03 2022:	                             Default = medium                                  
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -n DEVICE_NAME | NO_TARGET  (optional for MSP430, required for MSP432)        
+Tue Sep 20 13:38:03 2022:	                             The name of the device being accessed (prompt     
+Tue Sep 20 13:38:03 2022:	                             if mismatch between found and selected device).   
+Tue Sep 20 13:38:03 2022:	                             -n NO_TARGET executes MSP Flasher without         
+Tue Sep 20 13:38:03 2022:	                             attempting to connect to a target device          
+Tue Sep 20 13:38:03 2022:	                             Choose this option to detect if a certain FET     
+Tue Sep 20 13:38:03 2022:	                             is connected or when the FET firmware should be   
+Tue Sep 20 13:38:03 2022:	                             updated only.                                     
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -r [filenname,mem_sect]     Triggers a read operation in target device        
+Tue Sep 20 13:38:03 2022:	                             memory section specified by mem_section. The      
+Tue Sep 20 13:38:03 2022:	                             memory content is written to a file specified     
+Tue Sep 20 13:38:03 2022:	                             by Filename. Available memory sections are:       
+Tue Sep 20 13:38:03 2022:	                             - MAIN = the main memory of the device            
+Tue Sep 20 13:38:03 2022:	                             - INFO = info memory (see trigger –u)             
+Tue Sep 20 13:38:03 2022:	                             - BSL = bootloader memory (see trigger –b)        
+Tue Sep 20 13:38:03 2022:	                             - RAM = random access memory                      
+Tue Sep 20 13:38:03 2022:	                             - 0x****-0x**** = custom memory section           
+Tue Sep 20 13:38:03 2022:	                             Specify .txt as the extension for Filename to     
+Tue Sep 20 13:38:03 2022:	                             write data in TI-TXT format, or specify .a43      
+Tue Sep 20 13:38:03 2022:	                             (or .hex) to write data in Intel-Hex format.      
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -w filenname                Triggers a memory write operation. The accepted   
+Tue Sep 20 13:38:03 2022:	                             formats are txt (TI-txt) or a43/hex (Intel-hex).  
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -v filename (optional)      Triggers verification of the target memory against
+Tue Sep 20 13:38:03 2022:	                             a target code file. If -w is used, no argument is 
+Tue Sep 20 13:38:03 2022:	                             required. For a stand-alone verify, provide the   
+Tue Sep 20 13:38:03 2022:	                             path to a target code file as an argument.        
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -u                          Unlocks protected InfoA memory for writing        
+Tue Sep 20 13:38:03 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -b                          Unlocks protected BSL memory for writing          
+Tue Sep 20 13:38:03 2022:	                             (use only with -w switch)                         
+Tue Sep 20 13:38:03 2022:	 -e ERASE_ALL |              Erase memory. Default: ERASE_ALL (INFO & MAIN)    
+Tue Sep 20 13:38:03 2022:	    ERASE_MAIN |             ERASE_MAIN: erase MAIN memory only                
+Tue Sep 20 13:38:03 2022:	    ERASE_SEGMENT |          ERASE_SEGMENT: erase segment to be programmed only
+Tue Sep 20 13:38:03 2022:	    ERASE_TOTAL |            ERASE_TOTAL: applicable for FR5xx/FR6xx only!     
+Tue Sep 20 13:38:03 2022:	    ERASE_USER_CODE |        ERASE_USER_CODE: applicable for FR4xx only!       
+Tue Sep 20 13:38:03 2022:	    NO_ERASE                 NO_ERASE: use only with -w switch                 
+Tue Sep 20 13:38:03 2022:	                                                                               
+Tue Sep 20 13:38:03 2022:	 -p JTAG PASSWORD            Specifies the JTAG password that should be used   
+Tue Sep 20 13:38:03 2022:	                             to open a password protected target device        
+Tue Sep 20 13:38:03 2022:	                             (supported on FRAM d

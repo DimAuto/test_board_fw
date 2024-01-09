@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "battery.h": "c",
+        "msp430f6638.h": "c",
+        "test_board_leds.h": "c"
+    },
+    "cmake.configureOnOpen": true
+}

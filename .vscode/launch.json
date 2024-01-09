@@ -1,0 +1,11 @@
+{
+    "configurations": [
+    {
+        "name":"Launch",
+        "type": "node",
+        "request": "attach",
+        "cwd": "${fileDirname}",
+        "preLaunchTask": "Flash-Debug",
+    }
+    ]
+}

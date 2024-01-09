@@ -1,0 +1,98 @@
+[
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\main.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\.\\includes --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\lib --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=CMakeFiles\\main.dir\\src\\main.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\main.c",
+  "output": "CMakeFiles\\main.dir\\src\\main.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\battery.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\CMakeFiles\\src.dir\\battery.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\battery.c",
+  "output": "src\\CMakeFiles\\src.dir\\battery.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\encoder.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\CMakeFiles\\src.dir\\encoder.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\encoder.c",
+  "output": "src\\CMakeFiles\\src.dir\\encoder.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\gpio_peripherals.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\CMakeFiles\\src.dir\\gpio_peripherals.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\gpio_peripherals.c",
+  "output": "src\\CMakeFiles\\src.dir\\gpio_peripherals.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\internal_uart.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\CMakeFiles\\src.dir\\internal_uart.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\internal_uart.c",
+  "output": "src\\CMakeFiles\\src.dir\\internal_uart.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\max5418.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\CMakeFiles\\src.dir\\max5418.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\max5418.c",
+  "output": "src\\CMakeFiles\\src.dir\\max5418.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\message_handler.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\CMakeFiles\\src.dir\\message_handler.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\message_handler.c",
+  "output": "src\\CMakeFiles\\src.dir\\message_handler.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\test_board_leds.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\..\\includes --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\CMakeFiles\\src.dir\\test_board_leds.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\test_board_leds.c",
+  "output": "src\\CMakeFiles\\src.dir\\test_board_leds.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\adc.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\adc.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\adc.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\adc.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\gpio.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\gpio.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\gpio.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\gpio.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\helpers.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\helpers.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\helpers.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\helpers.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\i2c.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\i2c.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\i2c.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\i2c.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\led.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\led.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\led.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\led.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\ring_buffer.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\ring_buffer.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\ring_buffer.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\ring_buffer.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\timer.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\timer.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\timer.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\timer.c.obj"
+},
+{
+  "directory": "D:/FIRMWARE/bnvd-test-board-fw-Cmake/build",
+  "command": "C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\bin\\cl430.exe --compile_only --c_file=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\uart.c -D_DEBUG_ -D__MSP430F6638__ --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\.. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\. --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\.. --include_path=C:\\ti\\ccs1120\\ccs\\tools\\compiler\\ti-cgt-msp430_21.6.0.LTS\\include --include_path=D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\..\\..\\includes -vmspx -O0 --opt_for_speed=3 --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --output_file=src\\core\\CMakeFiles\\core.dir\\uart.c.obj",
+  "file": "D:\\FIRMWARE\\bnvd-test-board-fw-Cmake\\src\\core\\uart.c",
+  "output": "src\\core\\CMakeFiles\\core.dir\\uart.c.obj"
+}
+]

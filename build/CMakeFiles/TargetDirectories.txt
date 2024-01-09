@@ -1,0 +1,9 @@
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/CMakeFiles/main.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/CMakeFiles/edit_cache.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/CMakeFiles/rebuild_cache.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/src/CMakeFiles/src.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/src/CMakeFiles/edit_cache.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/src/CMakeFiles/rebuild_cache.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/src/core/CMakeFiles/core.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/src/core/CMakeFiles/edit_cache.dir
+D:/FIRMWARE/bnvd-test-board-fw-Cmake/build/src/core/CMakeFiles/rebuild_cache.dir

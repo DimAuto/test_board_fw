@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/Debug/",
+                "outDir": "${workspaceFolder}/Debug/"
+            },
+            "command": "gmake",
+            "args": [
+                "-j",
+                "-k",
+                "16",
+                "all",
+                "-O"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Release",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/Release/",
+                "outDir": "${workspaceFolder}/Debug/"
+            },
+            "command": "gmake",
+            "args": [
+                "-g",
+                "-k",
+                "16",
+                "all",
+                "-O"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Flash-Debug",
+            "type": "shell",
+            "command": "Flash_MSP430.bat",
+            "args": [
+                "MSP430F6638",
+                "${workspaceFolder}/Debug/*.txt"
+            ]
+        },
+        {
+            "type": "cmake",
+            "label": "CMake: build",
+            "command": "build",
+            "targets": [
+                ""
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "CMake template build task"
+        }
+    ]
+}

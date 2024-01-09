@@ -1,0 +1,237 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "src/src.lib"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"add_compile_options",
+			"add_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"src/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 30,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 28,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 27,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"backtrace" : 4,
+					"fragment" : "-vmspx"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-O0"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--opt_for_speed=3"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--silicon_errata=CPU21"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--silicon_errata=CPU22"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "--silicon_errata=CPU40"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "_DEBUG_"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "__MSP430F6638__"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 7,
+					"path" : "D:/FIRMWARE/bnvd-test-board-fw-Cmake/src/."
+				},
+				{
+					"backtrace" : 7,
+					"path" : "D:/FIRMWARE/bnvd-test-board-fw-Cmake/src/.."
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "D:/FIRMWARE/bnvd-test-board-fw-Cmake/src/../includes"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "D:/FIRMWARE/bnvd-test-board-fw-Cmake/src/core/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "D:/FIRMWARE/bnvd-test-board-fw-Cmake/src/core/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "D:/FIRMWARE/bnvd-test-board-fw-Cmake/src/core/../.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "D:/FIRMWARE/bnvd-test-board-fw-Cmake/src/core/../../includes"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "core::@0618756b1ff51bca1a0e"
+		}
+	],
+	"id" : "src::@145eef247bfb46b6828c",
+	"name" : "src",
+	"nameOnDisk" : "src.lib",
+	"paths" : 
+	{
+		"build" : "src",
+		"source" : "src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/battery.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/encoder.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/gpio_peripherals.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/internal_uart.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/max5418.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/message_handler.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/test_board_leds.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
